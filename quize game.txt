@@ -1,0 +1,162 @@
+
+import pyttsx3
+def speechtx(x):
+
+      engine=pyttsx3.init()
+      voices=engine.getProperty('voices')
+      engine.setProperty('voice',voices[0].id)
+      rate = engine.getProperty('rate')
+      engine.setProperty('rate',130)
+      engine.say(x)
+      engine.runAndWait()
+
+from tkinter import *
+list=['\n\n1.The baby frog is known as ? ','\n\n2. Rainbows consist of how many colors ?','\n\n3.Which animal is known as the Ship of the Desert ?','\n\n4.How many days are there in a year?',
+      '\n\n5.Which animal is known as the king of the jungle?','\n\n6.Name the National bird of India?','\n\n7.Name the National fruit of India?',
+      '\n\n8.Name the National tree of India?','\n\n9.What is the capital of India?','\n\n10.Name the largest mammal?','\n\n\n                              END']
+l1=['Tadpole','8 colours','Bamel','369 days (not a leap year)','The Lion is known as the king of the jungle.','The Peacock',' Zango','Banyan tree','New Delhi','Blue hale','']
+l2=['Tapole','7 colours','Camel','366 days (not a leap year)','The Ajay is known as the king of the jungle.','The Peecock',' Rango','Hanyan tree','Old Delhi','Blue Wale','']
+l3=['Tadple','4 colours','Cmel','36 days (not a leap year)','The mango is known as the king of the jungle.','The Peacok',' Mango','Tanyan tree','Bold Delhi','Blue Whale','']
+l4=['Tadpo','9 colours','Caml','365 days (not a leap year)','The dog is known as the king of the jungle.','The Heacock',' Lango','Ranyan tree','melt Delhi','Glue Whale','']
+
+#reslt=['A','B','B','D','A','A','C','A','A','C']
+
+k = []
+count=-1
+def questions():
+
+    s1=test6.get(1.0,END)
+    k.append(s1.upper())
+
+    test1.delete(1.0,END)
+    test2.delete(1.0, END)
+    test3.delete(1.0, END)
+    test4.delete(1.0, END)
+    test5.delete(1.0, END)
+    test6.delete(1.0, END)
+
+    global count
+    count = count + 1
+    test1.insert(1.0,list[count])
+    test2.insert(1.0,l1[count])
+    test3.insert(1.0,l2[count])
+    test4.insert(1.0,l3[count])
+    test5.insert(1.0,l4[count])
+
+
+
+
+
+def nxt():
+
+    lok='''Hello, Users
+    this is a simple question bank game
+
+    Click Next Button to proceed game........'''
+
+    test1.insert(1.0,lok)
+
+
+
+
+def result():
+    lbl1 = Label(root, text='You gotted      marks  out of 10 ', font=('Time New Roman', 20))
+    lbl1.place(x=110,y=500)
+
+    test7 = Text(root, bg='white', foreground='black',font=('Time New Roman',20),)
+    test7.place(x=254, y=506, width=35, height=32)
+
+    kj=[]
+    reslt = ['\n','A\n', 'B\n', 'B\n', 'D\n', 'A\n', 'A\n', 'C\n', 'A\n', 'A\n', 'C\n']
+    for a , b in zip(k,reslt):
+        if a==b:
+            kj.append(1)
+        elif a!=b:
+            kj=kj
+    rty=len(kj)-1
+    test7.insert(1.0,rty)
+
+
+
+
+
+
+def speec_h():
+    speechtx(list[count])
+    speechtx(l1[count])
+    speechtx(l2[count])
+    speechtx(l3[count])
+    speechtx(l4[count])
+
+
+
+
+root=Tk()
+root.title('Ajay Kumar')
+root.iconbitmap('Ajay kumar.ico')
+root.geometry('600x600')
+
+lbl1=Label(root,text='Quiz game',font=('Time New Roman',30))
+lbl1.place(x=210,y=10)
+
+test1=Text(root,bg='light blue',relief='sunken',font=('Time New Roman',20))
+test1.place(x=20,y=60,width=560,height=200)
+
+test2=Text(root,bg='gray',foreground='white')
+test2.place(x=50,y=270,width=250,height=20)
+
+test3=Text(root,bg='gray',foreground='white')
+test3.place(x=50,y=300,width=250,height=20)
+
+test4=Text(root,bg='gray',foreground='white')
+test4.place(x=50,y=330,width=250,height=20)
+
+test5=Text(root,bg='gray',foreground='white')
+test5.place(x=50,y=360,width=250,height=20)
+
+test6=Text(root,bg='green',foreground='white')
+test6.place(x=20,y=420,width=20,height=20)
+
+
+
+
+
+# answer lable
+lbl1=Label(root,text='Choose  any  right answer  A , B , C , D  and fill in green Box',font=('Time New Roman',10))
+lbl1.place(x=30,y=390)
+
+# lbl1=Label(root,text='You gotted             marks  out of 10 ',font=('Time New Roman',20))
+# lbl1.place(x=50,y=500)
+
+
+
+
+# opstions
+lbl2=Label(root,text='A',font=('Time New Roman',10))
+lbl2.place(x=30,y=265)
+
+lbl3=Label(root,text='B',font=('Time New Roman',10))
+lbl3.place(x=30,y=295)
+
+lbl4=Label(root,text='C',font=('Time New Roman',10))
+lbl4.place(x=30,y=325)
+
+lbl5=Label(root,text='D',font=('Time New Roman',10))
+lbl5.place(x=30,y=355)
+
+btn1=Button(root,text='NEXT',bg='light gray',command=questions)
+btn1.place(x=542,y=460)
+
+pic=PhotoImage(file="www.png")
+btn2=Button(root,bg='light gray',image=pic,command=speec_h)
+btn2.place(x=538,y=261,width=40,height=25)
+
+btn3=Button(root,text='Start',bg='light gray',relief='groove',command=nxt)
+btn3.place(x=260,y=560,width=100,height=35)
+
+btn4=Button(root,text='Result',bg='yellow',relief='groove',font=('Time New Roman',20),command=result)
+btn4.place(x=20,y=25,width=100,height=35)
+
+
+
+root.mainloop()
